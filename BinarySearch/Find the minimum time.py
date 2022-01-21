@@ -37,21 +37,23 @@ Constraints:
 
 """
 
-class Solution{
-public:
-    int minTime(int S1, int S2, int N){
-        int a = S1, b = S2;
-        if(a > b)
-            swap(a, b);
-        int low = 0, high = N, mid, mini = b*N;
-        while(low <= high){
-            mid = low +(high-low)/2;
-            mini = min(mini , max(mid*a , (N - mid)*b));
-            if(mid*a <= (N - mid)*b)
-                low = mid + 1;
-            else
-                high = mid - 1;
-        }
-        return mini;
-    }
-};
+class Solution:
+    def minTime(self, S1, S2, N):
+        # code here
+        a = S1
+        b = S2
+        if a > b:
+            #swapping 
+            a,b = b,a
+        low = 0
+        high = N
+        mini = b*N;
+        while low <= high:
+            mid = low +(high-low)//2
+            mini = min(mini , max(mid*a , (N - mid)*b))
+            if(mid*a <= (N - mid)*b):
+                low = mid + 1
+            else:
+                high = mid - 1
+        
+        return mini
